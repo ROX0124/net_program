@@ -18,8 +18,11 @@ class Iphdr:
     def pack_Iphdr(self):
         packed  = b''
         packed += struct.pack('!BBH', self.ver_len, self.tos, self.tot_len)
+        # packed += struct.pack('!2BH', self.ver_len, self.tos, self.tot_len)
         packed += struct.pack('!HH',  self.id, self.frag_off)
+        # packed += struct.pack('!2H',  self.id, self.frag_off)
         packed += struct.pack('!BBH', self.ttl, self.protocol, self.check)
+        # packed += struct.pack('!2BH', self.ttl, self.protocol, self.check)
         packed += struct.pack('!4s',  self.saddr)
         packed += struct.pack('!4s',  self.daddr)
         return packed
