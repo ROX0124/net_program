@@ -1,4 +1,4 @@
-import class3.MyTCPServer as my
+import MyTCPServer as my
 
 port = 2500
 BUFSIZE = 1024
