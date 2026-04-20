@@ -7,12 +7,10 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(('', port))
 
 while True:
-    msg  = input('Enter message: ')
-    sock.sendto(msg.encode(), ('localhost', port))
-    if msg == 'q':
+    msg, addr = sock.recvfrom(BUFSIZE)
+    print('Received: ', msg.decode())
+    if msg.decode() =='q':
         break
-
-    data, addr = sock.recvfrom(BUFSIZE)
-    print('Server says: ', data.decode())
+    sock.sendto(msg,addr)
 
 sock.close()
